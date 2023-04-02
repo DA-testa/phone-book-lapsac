@@ -14,14 +14,11 @@ def read_queries():
 def write_responses(result):
     print('\n'.join(result))
 
-def process_queries(queries):
+def process_queries(queries): # instead of a list i implemented dictionary to store contacts
     result = []
-    # Keep list of all existing (i.e. not deleted yet) contacts.
     contacts = {}
     for cur_query in queries:
         if cur_query.type == 'add':
-            # if we already have contact with such number,
-            # we should rewrite contact's name
             contacts[cur_query.number] = cur_query.name
         elif cur_query.type == 'del':
             if cur_query.number in contacts:
